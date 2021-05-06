@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import API from '../../utils/API';
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState("");
 
     const handleInputChange = event => {
         const { value } = event.target;
-        console.log(value)
         setSearchValue(value);
     }
 
@@ -15,6 +15,7 @@ export default function Home() {
 
         if (searchValue) {
             console.log(`Searching ${searchValue}...`)
+            API.getMovies(searchValue).then(data => console.log(data))
             setSearchValue("");
         }
     }
