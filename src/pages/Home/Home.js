@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchResults from '../../components/SearchResults/SearchResults';
 import API from '../../utils/API';
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
         <main>
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
+            <SearchResults movieData={movieData} searchError={searchError} />
         </main>
     );
 }
