@@ -4,6 +4,8 @@ import API from '../../utils/API';
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState("");
+    const [movieData, setMovieData] = useState([]);
+    const [searchError, setSearchError] = useState("")
 
     const handleInputChange = event => {
         const { value } = event.target;
@@ -15,7 +17,16 @@ export default function Home() {
 
         if (searchValue) {
             console.log(`Searching ${searchValue}...`)
-            API.getMovies(searchValue).then(data => console.log(data))
+            setMovieData([]);
+            setSearchError("")
+
+            API.getMovies(searchValue).then(data => {
+                if (data.Response === "False") {
+                    setSearchError(data.Error)
+                } else {
+                    setMovieData(data.Search)
+                }
+            })
             setSearchValue("");
         }
     }
