@@ -1,0 +1,12 @@
+#nominations {
+    width: 91vw;
+    max-width: 343px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#nominations li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
