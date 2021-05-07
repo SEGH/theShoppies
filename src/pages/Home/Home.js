@@ -8,6 +8,7 @@ import API from '../../utils/API';
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState("");
+    const [lastSearched, setLastSearched] = useState("");
     const [movieData, setMovieData] = useState([]);
     const [searchError, setSearchError] = useState("");
     const [nominations, setNominations] = useState([]);
@@ -32,6 +33,7 @@ export default function Home() {
                     setMovieData(data.Search)
                 }
             })
+            setLastSearched(searchValue);
             setSearchValue("");
         }
     }
@@ -54,7 +56,7 @@ export default function Home() {
             <Banner completed={nominations.length} />
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
-            <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
+            <SearchResults movieData={movieData} lastSearched={lastSearched} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
             <Nominations nominations={nominations} removeMovie={removeMovie} />
         </main>
     );
