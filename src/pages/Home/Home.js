@@ -38,12 +38,17 @@ export default function Home() {
         setNominations([...nominations, movie])
     }
 
+    const removeMovie = movie => {
+        const filteredMovies = nominations.filter(obj => obj.imdbID !== movie.imdbID);
+        setNominations(filteredMovies);
+    }
+
     return (
         <main>
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
             <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
-            <Nominations nominations={nominations} />
+            <Nominations nominations={nominations} removeMovie={removeMovie} />
         </main>
     );
 }
