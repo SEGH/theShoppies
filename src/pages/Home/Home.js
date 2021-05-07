@@ -42,7 +42,7 @@ export default function Home() {
         <main>
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
-            <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} />
+            <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
             <Nominations nominations={nominations} />
         </main>
     );
