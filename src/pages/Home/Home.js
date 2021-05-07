@@ -6,7 +6,8 @@ import API from '../../utils/API';
 export default function Home() {
     const [searchValue, setSearchValue] = useState("");
     const [movieData, setMovieData] = useState([]);
-    const [searchError, setSearchError] = useState("")
+    const [searchError, setSearchError] = useState("");
+    const [nominations, setNominations] = useState([]);
 
     const handleInputChange = event => {
         const { value } = event.target;
@@ -32,11 +33,15 @@ export default function Home() {
         }
     }
 
+    const nominateMovie = movie => {
+        setNominations([...nominations, movie])
+    }
+
     return (
         <main>
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
-            <SearchResults movieData={movieData} searchError={searchError} />
+            <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} />
         </main>
     );
 }
