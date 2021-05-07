@@ -37,7 +37,11 @@ export default function Home() {
     }
 
     const nominateMovie = movie => {
-        setNominations([...nominations, movie])
+        if (nominations.length < 5) {
+            setNominations([...nominations, movie])
+        } else {
+            console.log("Maximum allowed nominations reached")
+        }
     }
 
     const removeMovie = movie => {
