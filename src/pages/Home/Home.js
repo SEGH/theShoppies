@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import './Home.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import SearchResults from '../../components/SearchResults/SearchResults';
 import Nominations from '../../components/Nominations/Nominations';
+import Banner from '../../components/Banner/Banner';
 import API from '../../utils/API';
 
 export default function Home() {
@@ -45,6 +47,7 @@ export default function Home() {
 
     return (
         <main>
+            <Banner completed={nominations.length} />
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
             <SearchResults movieData={movieData} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
