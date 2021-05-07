@@ -1,0 +1,16 @@
+#searchResults {
+    width: 91vw;
+    max-width: 343px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#searchResults h4 {
+    font-size: 1.5rem;
+}
+
+#searchResults li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
