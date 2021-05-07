@@ -56,8 +56,10 @@ export default function Home() {
             <Banner completed={nominations.length} />
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
-            <SearchResults movieData={movieData} lastSearched={lastSearched} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
-            <Nominations nominations={nominations} removeMovie={removeMovie} />
+            <section id="tableRow">
+                <SearchResults movieData={movieData} lastSearched={lastSearched} searchError={searchError} nominateMovie={nominateMovie} nominations={nominations} />
+                <Nominations nominations={nominations} removeMovie={removeMovie} />
+            </section>
         </main>
     );
 }
