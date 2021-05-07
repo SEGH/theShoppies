@@ -6,8 +6,9 @@ export default function SearchResults({ movieData, lastSearched, searchError, no
     return (
         <Collection id="searchResults" header={searchError !== "" ? searchError : movieData.length > 0? `Results for "${lastSearched}"` : ""}>
             {movieData.length > 0 && movieData.map((movie, index) => (
-                <CollectionItem key={index}>{movie.Title} {movie.Year}
-                    <Button className={nominations.filter(obj => obj.imdbID === movie.imdbID).length > 0 ? "disabled" : ""}
+                <CollectionItem key={index}>
+                    <span>{movie.Title} ({movie.Year})</span>
+                    <Button small className={nominations.filter(obj => obj.imdbID === movie.imdbID).length > 0 ? "disabled" : ""}
                         onClick={() => nominateMovie(movie)}>Nominate</Button>
                 </CollectionItem>
             ))}
