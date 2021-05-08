@@ -1,6 +1,6 @@
 #nominations {
     width: 91vw;
-    max-width: 343px;
+    /* max-width: 343px; */
     max-height: 300px;
     overflow-y: auto;
 }
@@ -22,4 +22,12 @@
 #nominations .noMoviesIcon i {
     color: var(--lightGray);
     width: 6rem;
+}
+
+@media only screen and (min-width: 601px) {
+    #nominations {
+        flex: 1 1 300px;
+        margin: 0 .5em;
+        max-height: 365px;
+    }
 }
