@@ -2,7 +2,7 @@ import './SearchResults.css';
 import { Collection, CollectionItem, Button, Icon } from 'react-materialize';
 
 export default function SearchResults({ movieData, lastSearched, searchError, nominateMovie, nominations }) {
-    console.log(movieData)
+
     return (
         <Collection id="searchResults" header={searchError !== "" ? searchError : movieData.length > 0 ? `Results for "${lastSearched}"` : 'Results'}>
             {movieData.length > 0 ? movieData.map((movie, index) => (
