@@ -5,13 +5,17 @@ import SearchResults from '../../components/SearchResults/SearchResults';
 import Nominations from '../../components/Nominations/Nominations';
 import Banner from '../../components/Banner/Banner';
 import API from '../../utils/API';
+import db from '../../db/db';
+import { useLiveQuery } from 'dexie-react-hooks';
+
+
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState("");
     const [lastSearched, setLastSearched] = useState("");
     const [movieData, setMovieData] = useState([]);
     const [searchError, setSearchError] = useState("");
-    const [nominations, setNominations] = useState([]);
+    const nominations = useLiveQuery(() => db.movies.toArray(), []) || [];
 
     const handleInputChange = event => {
         const { value } = event.target;
@@ -40,15 +44,18 @@ export default function Home() {
 
     const nominateMovie = movie => {
         if (nominations.length < 5) {
-            setNominations([...nominations, movie])
+            db.movies.add({ 
+                imdbID: movie.imdbID,
+                Title: movie.Title,
+                Year: movie.Year
+            })
         } else {
             console.log("Maximum allowed nominations reached")
         }
     }
 
     const removeMovie = movie => {
-        const filteredMovies = nominations.filter(obj => obj.imdbID !== movie.imdbID);
-        setNominations(filteredMovies);
+        db.movies.delete(movie.imdbID)
     }
 
     return (
