@@ -15,6 +15,7 @@ export default function Home() {
     const [lastSearched, setLastSearched] = useState("");
     const [movieData, setMovieData] = useState([]);
     const [searchError, setSearchError] = useState("");
+    const [message, setMessage] = useState(null);
     const nominations = useLiveQuery(() => db.movies.toArray(), []) || [];
 
     const handleInputChange = event => {
@@ -50,7 +51,9 @@ export default function Home() {
                 Year: movie.Year
             })
         } else {
-            console.log("Maximum allowed nominations reached")
+            console.log("Maximum allowed nominations reached");
+            setMessage("You can only nominate 5 movies");
+            setTimeout(() => setMessage(null), 5000);
         }
     }
 
@@ -60,7 +63,7 @@ export default function Home() {
 
     return (
         <main>
-            <Banner completed={nominations.length} />
+            <Banner completed={nominations.length} message={message} />
             <h1>The Shoppies</h1>
             <SearchBar handleInputChange={handleInputChange} handleSearch={handleSearch} searchValue={searchValue} />
             <section id="tableRow">
