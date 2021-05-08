@@ -31,13 +31,16 @@ export default function Home() {
             setMovieData([]);
             setSearchError("")
 
-            API.getMovies(searchValue).then(data => {
-                if (data.Response === "False") {
-                    setSearchError(data.Error)
-                } else {
-                    setMovieData(data.Search)
-                }
-            })
+            API.getMovies(searchValue)
+                .then(data => {
+                    if (data.Response === "False") {
+                        setSearchError(data.Error)
+                    } else {
+                        setMovieData(data.Search)
+                    }
+                })
+                .catch(err => console.log(err));
+                
             setLastSearched(searchValue);
             setSearchValue("");
         }
@@ -45,7 +48,7 @@ export default function Home() {
 
     const nominateMovie = movie => {
         if (nominations.length < 5) {
-            db.movies.add({ 
+            db.movies.add({
                 imdbID: movie.imdbID,
                 Title: movie.Title,
                 Year: movie.Year
