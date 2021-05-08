@@ -8,7 +8,7 @@ export default function SearchResults({ movieData, lastSearched, searchError, no
             {movieData.length > 0 ? movieData.map((movie, index) => (
                 <CollectionItem key={index}>
                     <span>{movie.Title} ({movie.Year})</span>
-                    <Button small className={nominations.filter(obj => obj.imdbID === movie.imdbID).length > 0 ? "disabled" : ""}
+                    <Button small waves="light" className={nominations.filter(obj => obj.imdbID === movie.imdbID).length > 0 ? "disabled" : ""}
                         onClick={() => nominateMovie(movie)}>Nominate</Button>
                 </CollectionItem>
             ))

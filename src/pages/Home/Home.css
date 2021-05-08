@@ -5,6 +5,19 @@ main {
     padding-top: 5em;
 }
 
+.btn-small {
+    background-color: var(--darkGreen);
+    flex: 0 0 100px;
+}
+
+.btn-small:hover {
+    background-color: var(--green);
+}
+
+.btn-small:focus {
+    background-color: var(--darkGreen);
+}
+
 @media only screen and (min-width: 601px) {
     main #tableRow {
         display: flex;
