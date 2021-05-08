@@ -14,3 +14,12 @@
     justify-content: space-between;
     align-items: baseline;
 }
+
+#searchResults .noMoviesIcon {
+    justify-content: center;
+}
+
+#searchResults .noMoviesIcon i {
+    color: var(--lightGray);
+    width: 6rem;
+}
